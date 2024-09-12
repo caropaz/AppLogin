@@ -1,0 +1,50 @@
+﻿@model AppLogin.ViewModels.LoginVM;
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>Login</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    </head>
+    <body>
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <div class="col-md-6">
+            <div class="card">
+                <h5 class="card-header">¡Ingresa!</h5>
+                <div class="card-body">
+                    <form asp-controller="Access" asp-action="Login" method="post">
+ 
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" required asp-for="Username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" required asp-for="Password">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+
+                        
+                        @if (ViewData["Mensaje"] != null)
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                @ViewData["Mensaje"]
+                            </div>
+                        }
+                        <div>
+                            <p>¿No tienes una cuenta? <a asp-controller="Access" asp-action="Registrarse">¡Registrate!</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+           </div>
+    </div>
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+    </html>

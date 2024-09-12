@@ -1,0 +1,55 @@
+﻿@model AppLogin.ViewModels.UsuarioVM;
+@{
+    Layout= null;
+}
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>Registrarse</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <div class="d-flex justify-content-center align-items-center vh-100">
+        <div class="col-md-6">
+        <form asp-controller="Access" asp-action="Registrarse" method="post">
+
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" required asp-for="Name">
+            </div>
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" required asp-for="Username">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required asp-for="Email">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" required asp-for="Password">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Confirmar Password</label>
+                <input type="password" class="form-control" id="password" required asp-for="ConfirmarPassword">
+            </div>
+            <button type="submit" class="btn btn-primary">Registrate</button>
+
+            @if (ViewData["Mensaje"] != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @ViewData["Mensaje"]
+                </div>
+            }
+            <div>
+                <p>¿Ya tienes una cuenta? <a asp-controller="Access" asp-action="Login">Iniciar Sesion</a></p>
+            </div>
+        </form>
+        </div>
+    </div>
+   
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+    </html>
